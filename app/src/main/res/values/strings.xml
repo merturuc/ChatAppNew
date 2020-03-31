@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ChatApp</string>
+    <string name="register_user">Register User</string>
+    <string name="enter_email">Enter email</string>
+    <string name="email">Email</string>
+    <string name="enter_password">Enter password</string>
+    <string name="password">Password</string>
+    <string name="enter_username">Enter username</string>
+    <string name="username">Username</string>
+    <string name="already_registered_n_click_here_to_login">Already Registered ? \n Click Here to Login</string>
+</resources>
