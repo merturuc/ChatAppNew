@@ -7,47 +7,42 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView textViewUsername , textViewUserEmail;
-
+    private Button buttonLogout;
+    private Button buttonBackChat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        if(!SharedPrefManager.getInstance(this).isLoggedIn()){
-            finish();
-            startActivity(new Intent(this , LoginActivity.class));
-        }
+
         textViewUsername = findViewById(R.id.textViewUsername);
         textViewUserEmail = findViewById(R.id.textViewUserEmail);
         textViewUserEmail.setText(SharedPrefManager.getInstance(this).getUserEmail());
         textViewUsername.setText(SharedPrefManager.getInstance(this).getUsername());
+
+        buttonLogout = findViewById(R.id.buttonLogout);
+        buttonBackChat = findViewById(R.id.buttonBackChat);
+        buttonBackChat.setOnClickListener(this);
+        buttonLogout.setOnClickListener(this);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-      switch (item.getItemId()){
-          case R.id.menuLogout:
-              SharedPrefManager.getInstance(this).logout();
-              finish();
-              startActivity(new Intent(this, LoginActivity.class));
-              break;
-          case R.id.menuSettings:
-              Toast.makeText(this,"You clicked settings",Toast.LENGTH_LONG).show();
-              break;
-      }
-      return true;
-
+    public void onClick(View v) {
+        if (v == buttonLogout)
+            SharedPrefManager.getInstance(this).logout();
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        if (v == buttonBackChat){
+            startActivity(new Intent(this, ChatActivity.class));
+       }
     }
 }

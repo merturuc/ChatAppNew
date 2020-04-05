@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if(SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(this , ProfileActivity.class));
+            startActivity(new Intent(this , ChatActivity.class));
             return;
         }
         editTextUsername = findViewById(R.id.editTextUsername);
@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 obj.getString("username"),
                                                 obj.getString("email")
                                         );
-                              startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                              startActivity(new Intent(getApplicationContext(),ChatActivity.class));
                               finish();
                             } else {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();

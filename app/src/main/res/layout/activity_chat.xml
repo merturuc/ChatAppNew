@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/dd2"
+    tools:context=".ChatActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <Button
+            android:id="@+id/buttonProfile"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="300dp"
+            android:backgroundTint="#002E2121"
+            android:drawableStart="@android:drawable/ic_menu_myplaces"
+            android:drawableTint="#D50000" />
+
+        <Button
+            android:id="@+id/buttonLogout"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#002E2121"
+            android:drawableStart="@android:drawable/ic_notification_clear_all"
+            android:drawableTint="#D50000"
+
+            />
+    </LinearLayout>
+
+</RelativeLayout>
