@@ -1,32 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/dd2"
+    android:orientation="vertical"
     tools:context=".ChatActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/buttonProfile"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="300dp"
-            android:backgroundTint="#002E2121"
-            android:drawableStart="@android:drawable/ic_menu_myplaces"
-            android:drawableTint="#D50000" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            >
 
-        <Button
-            android:id="@+id/buttonLogout"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:backgroundTint="#002E2121"
-            android:drawableStart="@android:drawable/ic_notification_clear_all"
-            android:drawableTint="#D50000"
+            <Button
+                android:id="@+id/buttonProfile"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="300dp"
+                android:backgroundTint="#002E2121"
+                android:drawableStart="@android:drawable/ic_menu_myplaces"
+                android:drawableTint="#D50000" />
 
-            />
+            <Button
+                android:id="@+id/buttonLogout"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="#002E2121"
+                android:drawableStart="@android:drawable/ic_notification_clear_all"
+                android:drawableTint="#D50000"
+                />
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </RelativeLayout>
     </LinearLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#1C0D0D"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/messageET"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#882B0606"
+            android:fontFamily="sans-serif-medium"
+            android:hint="@string/message"
+            android:maxLines="2">
+        </EditText>
+
+        <Button
+            android:id="@+id/sendBtn"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00570A0A"
+            android:drawableStart="@android:drawable/ic_menu_send"
+            android:drawableTint="#D50000" />
+
+    </LinearLayout>
+
+</LinearLayout>
