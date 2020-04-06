@@ -9,8 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
 public class ChatActivity extends AppCompatActivity implements View.OnClickListener {
+
     private Button buttonProfile;
     private Button buttonLogout;
 
