@@ -6,22 +6,23 @@
     android:padding="8dp">
 
     <TextView
+        android:id="@+id/receivedMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/receivedMessage"
+        android:layout_marginRight="64dp"
+        android:background="@drawable/reveive_design"
         android:padding="4dp"
-        android:background="#808080"
-        android:textColor="#ffffff"
-        android:layout_marginRight="64dp" />
+        android:text="aaaaaaaaaaaa"
+        android:textColor="#000000" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/sentMessage"
         android:layout_alignParentRight="true"
         android:padding="4dp"
-        android:background="#D50000"
-        android:textColor="#ffffff"
+        android:background="@drawable/send_design"
+        android:textColor="#000000"
+        android:text="aaaaaaaaaaaa"
         android:layout_marginLeft="64dp"
         />
-
 </RelativeLayout>

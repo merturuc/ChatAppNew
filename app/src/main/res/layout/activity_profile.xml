@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dd2"
+    android:background="@drawable/deneme"
     tools:context=".ProfileActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:background="#904E2509">
 
         <Button
             android:id="@+id/buttonBackChat"
@@ -39,7 +40,21 @@
         android:paddingLeft="90dp"
         android:paddingRight="90dp">
 
-
+        <ImageView
+            android:id="@+id/buttonProfilImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:background="@drawable/profimage">
+        </ImageView>
+        <Button
+            android:id="@+id/buttonProfilGüncel"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="30dp"
+            android:text="Resim Ekle">
+        </Button>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
