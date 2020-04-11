@@ -49,7 +49,7 @@
             android:background="@drawable/profimage">
         </ImageView>
         <Button
-            android:id="@+id/buttonProfilGüncel"
+            android:id="@+id/buttonProfile"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginBottom="30dp"
@@ -86,6 +86,13 @@
             android:textColor="#FFFFFF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/textViewUserID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:text="ID"
+            android:textAlignment="center" />
 
     </LinearLayout>
 </RelativeLayout>

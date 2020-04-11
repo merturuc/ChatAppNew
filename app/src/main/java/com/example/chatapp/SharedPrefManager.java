@@ -2,13 +2,14 @@ package com.example.chatapp;
 
         import android.content.Context;
         import android.content.SharedPreferences;
+        import android.preference.PreferenceManager;
 
         import com.android.volley.Request;
         import com.android.volley.RequestQueue;
         import com.android.volley.toolbox.Volley;
 
 public class SharedPrefManager {
-
+    // Önbellekte verileri tutmak için
     private static SharedPrefManager instance;
     private static Context ctx;
     private static final String SHARED_PREF_NAME = "mysharedpref12";
@@ -28,9 +29,9 @@ public class SharedPrefManager {
         return instance;
     }
 
-    public boolean userLogin(int id, String username, String email) {
-        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        public boolean userLogin(int id, String username, String email) {
+            SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putInt(KEY_USER_ID, id);
         editor.putString(KEY_USER_EMAIL, email);
@@ -63,5 +64,11 @@ public class SharedPrefManager {
     public String  getUserEmail(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_USER_EMAIL, null);
+    }
+
+    public String getId() {
+       SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+       return Integer.toString(sharedPreferences.getInt(KEY_USER_ID,0));
+
     }
 }

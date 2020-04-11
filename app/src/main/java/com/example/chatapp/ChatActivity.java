@@ -73,7 +73,10 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url("ws://192.168.1.104:8080").build();
         SocketListener socketListener = new SocketListener(this);
+
+
         webSocket = client.newWebSocket(request, socketListener );
+        System.out.println(webSocket);
     }
     public class SocketListener extends WebSocketListener{
         public ChatActivity activity;
@@ -156,7 +159,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
                 JSONObject item = messageList.get(i);
 
-                try {
+                    try {
                     if(item.getBoolean("byServer")){
                         receivedMessage.setVisibility(View.VISIBLE);
                         receivedMessage.setText(item.getString("message"));
