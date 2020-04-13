@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonLogin;
     private Button buttonRegister;
     private ProgressDialog progressDialog;
-
+    private CheckBox rememberMe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextPassword);
+        rememberMe = findViewById(R.id.CheckBoxRemember);
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonRegister = findViewById(R.id.buttonRegister);
 
@@ -55,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void userLogin() {
         final String username = editTextUsername.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
+        final boolean checkRemember = rememberMe.isChecked();
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -65,19 +68,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         progressDialog.dismiss();
                         try {
                             JSONObject obj = new JSONObject(response);
-                            if (!obj.getBoolean("error")) {
-                                SharedPrefManager.getInstance(getApplicationContext())
-                                        .userLogin(
-                                                obj.getInt("id"),
-                                                obj.getString("username"),
-                                                obj.getString("email")
-                                        );
-                              startActivity(new Intent(getApplicationContext(),ChatActivity.class));
-                              finish();
-                            } else {
-                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
-                            }
 
+                               if (!obj.getBoolean("error")) {
+                                   if(checkRemember == true) {
+                                       SharedPrefManager.getInstance(getApplicationContext())
+                                               .userLogin(
+                                                       obj.getInt("id"),
+                                                       obj.getString("username"),
+                                                       obj.getString("email")
+                                               );
+                                   }else {
+                                       SharedPrefManager.getInstance(getApplicationContext()).ruserLogin();
+                                       }
+                                       startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+                                       finish();
+                                   }
+                                else {
+                                   Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                               }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

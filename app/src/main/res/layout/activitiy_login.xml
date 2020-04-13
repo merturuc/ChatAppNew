@@ -59,7 +59,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
                 android:buttonTint="#B31717"
-                android:checked="true"
+                android:checked="false"
                 android:fontFamily="sans-serif-black"
                 android:text="Remember Me"
                 android:textColor="#DD2C00" />
