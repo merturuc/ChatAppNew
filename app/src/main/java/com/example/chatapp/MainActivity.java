@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(this , ProfileActivity.class));
+            startActivity(new Intent(this , ProfileUpdateActivity.class));
             return;
         }
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             registerEmptyControl();
         if(control = false)
             registerUser();
+
 
         if (view == buttonLogin)
             startActivity(new Intent(this, LoginActivity.class));

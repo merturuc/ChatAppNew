@@ -24,6 +24,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
+import com.android.volley.toolbox.StringRequest;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -46,7 +50,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     private WebSocket webSocket;
     private MessageAdapter adapter;
     private EditText messageBox;
-
+    MessageDataPost data = new MessageDataPost();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         adapter = new MessageAdapter();
         messageList.setAdapter(adapter);
 
+
       if(!SharedPrefManager.getInstance(this).isLoggedIn()){
            finish();
            startActivity(new Intent(this , LoginActivity.class));
@@ -76,7 +81,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
 
         webSocket = client.newWebSocket(request, socketListener );
-        System.out.println(webSocket);
+
     }
     public class SocketListener extends WebSocketListener{
         public ChatActivity activity;
@@ -112,6 +117,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 }
             });
+            data.Post();
         }
 
 
@@ -201,14 +207,16 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                         e.printStackTrace();
                     }
                 }
+
         }
         if (v == buttonProfile)
-            startActivity(new Intent(this, ProfileActivity.class));
+            startActivity(new Intent(this, ProfileUpdateActivity.class));
         if (v == buttonLogout) {
             SharedPrefManager.getInstance(this).logout();
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
     }
+
     }
 

@@ -71,4 +71,8 @@ public class SharedPrefManager {
        return Integer.toString(sharedPreferences.getInt(KEY_USER_ID,0));
 
     }
+    public Integer getId2(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(KEY_USER_ID,0);
+    }
 }
