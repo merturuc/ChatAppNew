@@ -5,6 +5,8 @@ package com.example.chatapp;
         import android.app.ProgressDialog;
         import android.content.Intent;
         import android.os.Bundle;
+        import android.text.format.DateFormat;
+        import android.util.Log;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
@@ -25,6 +27,7 @@ package com.example.chatapp;
         import java.util.Date;
         import java.util.HashMap;
         import java.util.Map;
+        import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonRegister;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressDialog progressDialog;
     private Button buttonLogin;
     boolean control = false;
+    private String reg_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String email = editTextEmail.getText().toString().trim();
         final String username = editTextUsername.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
+        Date date = new Date();
+        reg_date = DateFormat.format("dd.MM.yyyy", date).toString();
 
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
@@ -81,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
+                            Log.e("regDate",reg_date);
                             JSONObject jsonObject = new JSONObject(response);
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
@@ -101,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 params.put("username", username);
                 params.put("email", email);
                 params.put("password", password);
+                params.put("regDate",reg_date);
                 return params;
             }
         };

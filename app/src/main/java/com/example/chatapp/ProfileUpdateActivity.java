@@ -48,7 +48,6 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
         buttonLogout = findViewById(R.id.buttonLogout);
        // buttonProfile = findViewById(R.id.buttonProfile);
         buttonProfilUpdate = findViewById(R.id.buttonProfilUpdate);
-        imageViewProfil.setImageResource(R.drawable.profil);
       //  buttonProfile.setOnClickListener(this);
         buttonLogout.setOnClickListener(this);
         buttonProfilUpdate.setOnClickListener(this);
