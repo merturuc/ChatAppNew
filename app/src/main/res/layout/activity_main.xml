@@ -4,9 +4,13 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@drawable/dd2"
+    android:background="#C41E0E40"
 tools:context=".MainActivity">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:background="@drawable/deneme9"/>
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -22,24 +26,20 @@ tools:context=".MainActivity">
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:alpha="0.7"
-            android:background="@drawable/button3"
             android:fontFamily="sans-serif-black"
             android:hint="Enter Username"
             android:inputType="textPersonName"
             android:padding="15dp"
-            android:textColorHint="#FFB18D84" />
+            android:textColorHint="@color/colorAccent" />
 
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:alpha="0.7"
-            android:background="@drawable/button3"
             android:fontFamily="sans-serif-black"
             android:hint="Enter Password"
-            android:textColorHint="#FFB18D84"
+            android:textColorHint="@color/colorAccent"
             android:inputType="textPassword"
             android:padding="15dp" />
 
@@ -48,28 +48,28 @@ tools:context=".MainActivity">
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:alpha="0.7"
-            android:background="@drawable/button3"
             android:fontFamily="sans-serif-black"
             android:gravity="top"
             android:hint="Enter Email"
             android:includeFontPadding="false"
             android:inputType="textEmailAddress"
             android:padding="15dp"
-            android:textColorHint="#FFB18D84" />
+            android:textColorHint="@color/colorAccent" />
 
 
         <Button
             android:id="@+id/buttonRegister"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
             android:padding="15dp"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="0dp"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/buttong"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorAccent"
+            android:text="SIGN UP"
+            android:background="@drawable/element_outline"
             android:onClick="onClick" />
 
         <Button
@@ -77,14 +77,12 @@ tools:context=".MainActivity">
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="-20dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="-100dp"
             android:padding="10dp"
-            android:background="@drawable/button47"
-            android:shadowColor="@android:color/transparent"
-            android:textColor="#FFFFFF"
+            android:background="@drawable/element_outline"
+            android:textColor="@color/colorAccent"
             android:text="SIGN IN" />
     </LinearLayout>
 

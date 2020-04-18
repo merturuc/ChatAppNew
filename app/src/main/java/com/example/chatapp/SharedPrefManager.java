@@ -41,11 +41,11 @@ public class SharedPrefManager {
 
         return true;
     }
-       public boolean ruserLogin(){
+       public boolean ruserLogin(int id){
            SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
            SharedPreferences.Editor editor = sharedPreferences.edit();
 
-
+           editor.putInt(KEY_USER_ID, id);
            editor.putString(KEY_USER_EMAIL, "");
            editor.putString(KEY_USERNAME, "");
 
@@ -55,7 +55,7 @@ public class SharedPrefManager {
 
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        System.out.println("Giriş yapıldı1");
+
         if (sharedPreferences.getString(KEY_USERNAME, null) != null) {
             return true;
         }
@@ -65,7 +65,6 @@ public class SharedPrefManager {
     public boolean logout() {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        System.out.println("Çıkış yapıldı");
         editor.clear();
         editor.apply();
         return true;

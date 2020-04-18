@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             JSONObject obj = new JSONObject(response);
 
                                if (!obj.getBoolean("error")) {
-                                   if(checkRemember == true) {
+                                   if(checkRemember) {
                                        SharedPrefManager.getInstance(getApplicationContext())
                                                .userLogin(
                                                        obj.getInt("id"),
@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                        obj.getString("email")
                                                );
                                    }else {
-                                       SharedPrefManager.getInstance(getApplicationContext()).ruserLogin();
+                                       SharedPrefManager.getInstance(getApplicationContext()).ruserLogin(obj.getInt("id"));
                                        }
                                        startActivity(new Intent(getApplicationContext(), ChatActivity.class));
                                        finish();

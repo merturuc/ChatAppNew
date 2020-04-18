@@ -22,6 +22,7 @@ package com.example.chatapp;
         import org.json.JSONException;
         import org.json.JSONObject;
 
+        import java.util.Date;
         import java.util.HashMap;
         import java.util.Map;
 
@@ -116,7 +117,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view == buttonRegister)
             registerEmptyControl();
         if(control = false)
+
             registerUser();
+        startActivity(new Intent(this, LoginActivity.class));
 
 
         if (view == buttonLogin)

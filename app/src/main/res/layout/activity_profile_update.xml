@@ -108,6 +108,7 @@
                             </TextView>
 
                             <TextView
+                                android:id="@+id/textViewBio"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -139,19 +140,20 @@ You won't be afraid to have a good time and will have a healthy respect for life
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/textViewDate"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:text="9.7"
                                 android:textColor="#918080"
-                                android:textSize="35sp"
+                                android:textSize="25sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Rating"
+                                android:text="Date"
                                 android:textColor="#918080"
                                 android:textSize="20sp" />
                         </LinearLayout>
@@ -165,12 +167,13 @@ You won't be afraid to have a good time and will have a healthy respect for life
                             android:textColor="#918080">
 
                             <TextView
+                                android:id="@+id/textViewMessageCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:text="100"
                                 android:textColor="#918080"
-                                android:textSize="35sp"
+                                android:textSize="25sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -205,6 +208,7 @@ You won't be afraid to have a good time and will have a healthy respect for life
                         android:weightSum="2">
 
                         <Button
+                            android:id="@+id/buttonProfilUpdate"
                             android:layout_width="125dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -214,7 +218,7 @@ You won't be afraid to have a good time and will have a healthy respect for life
                             android:text="ProfilText"
                             android:textColor="@color/colorAccent" />
 
-                        <Button
+                       <Button
                             android:layout_width="125dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"

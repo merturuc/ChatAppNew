@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ProfileUpdateActivity"></activity>
+        <activity android:name=".ProfileUserUpdate"></activity>
+        <activity android:name=".ProfileUpdateActivity" />
+        <activity android:name=".MessageDataPost" />
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".ChatActivity">
