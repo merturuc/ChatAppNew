@@ -5,6 +5,8 @@ package com.example.chatapp;
         import android.app.ProgressDialog;
         import android.content.Intent;
         import android.os.Bundle;
+        import android.text.format.DateFormat;
+        import android.util.Log;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextUsername, editTextEmail, editTextPassword;
     private ProgressDialog progressDialog;
     private Button buttonLogin;
+    private String reg_date;
     boolean control = false;
 
     @Override
@@ -71,7 +74,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String email = editTextEmail.getText().toString().trim();
         final String username = editTextUsername.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
-
+        Date date = new Date();
+        reg_date = DateFormat.format("yyyy-MM-dd",date).toString();
+        Log.e("Date",reg_date);
+        System.out.println(reg_date);
         progressDialog.setMessage("Registering user...");
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
@@ -101,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 params.put("username", username);
                 params.put("email", email);
                 params.put("password", password);
+                params.put("reg_date",reg_date);
                 return params;
             }
         };
@@ -118,8 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             registerEmptyControl();
         if(control = false)
 
-            registerUser();
-        startActivity(new Intent(this, LoginActivity.class));
+        registerUser();
+        // startActivity(new Intent(this, LoginActivity.class));
 
 
         if (view == buttonLogin)

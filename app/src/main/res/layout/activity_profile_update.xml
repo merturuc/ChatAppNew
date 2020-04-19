@@ -215,7 +215,7 @@ You won't be afraid to have a good time and will have a healthy respect for life
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
                             android:background="@drawable/element_outline"
-                            android:text="ProfilText"
+                            android:text="Update"
                             android:textColor="@color/colorAccent" />
 
                        <Button

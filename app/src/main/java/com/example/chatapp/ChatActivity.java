@@ -1,7 +1,9 @@
 package com.example.chatapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -33,6 +35,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     private Button buttonLogout;
     private Button send;
     private WebSocket webSocket;
+    private WebSocket webSocket1;
     private MessageAdapter adapter;
     private EditText messageBox;
 
@@ -52,7 +55,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         adapter = new MessageAdapter();
         messageList.setAdapter(adapter);
 
-
         if (!SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
@@ -71,15 +73,18 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (v == send) {
-            String message = messageBox.getText().toString();
+            String username = SharedPrefManager.getInstance(this).getUsername();
+            String message ="("+username+")" +":"+ messageBox.getText().toString();
             String id = SharedPrefManager.getInstance(this).getId();
             msg.MessageData(message, id);
+
             if (!message.isEmpty()) {
-                webSocket.send(message);
+               webSocket.send(message);
+
                 messageBox.setText("");
                 JSONObject jsonObject = new JSONObject();
                 try {
-                    jsonObject.put("message", message); //kullanıcının yazdıgı veriyi sunucuya işler
+                    jsonObject.put("message",message); //kullanıcının yazdıgı veriyi sunucuya işler
                     jsonObject.put("byServer", false);
 
                     adapter.addItem(jsonObject);
@@ -120,7 +125,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         @Override
-        public void onMessage(WebSocket webSocket, final String text) {
+        public void onMessage(WebSocket webSocket, final String text ) {
             // super.onMessage(webSocket, text);
             activity.runOnUiThread(new Runnable() {
                 @Override
@@ -130,6 +135,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                         jsonObject.put("message", text);
                         jsonObject.put("byServer", true);
 
+
                         adapter.addItem(jsonObject);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -137,6 +143,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
                 }
             });
         }
+
+
 
 
         @Override
@@ -178,11 +186,10 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
                 view = getLayoutInflater().inflate(R.layout.message_list_item, viewGroup, false);
-
                 TextView sentMessage = view.findViewById(R.id.sentMessage);
                 TextView receivedMessage = view.findViewById(R.id.receivedMessage);
-
                 JSONObject item = messageList.get(i);
+
 
                 try {
                     if (item.getBoolean("byServer")) {
@@ -207,7 +214,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         void addItem(JSONObject item) {
             messageList.add(item);
             notifyDataSetChanged();
-
         }
     }
 

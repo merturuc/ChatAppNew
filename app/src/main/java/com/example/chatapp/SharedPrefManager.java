@@ -16,6 +16,7 @@ public class SharedPrefManager {
     private static final String KEY_USERNAME = "username";
     private static final String KEY_USER_EMAIL = "useremail";
     private static final String KEY_USER_ID = "userid";
+    private static final String KEY_USER_BIO = "bio";
 
     private SharedPrefManager(Context context) {
         ctx = context;
@@ -41,16 +42,17 @@ public class SharedPrefManager {
 
         return true;
     }
-       public boolean ruserLogin(int id){
+
+       public boolean profilData( String email , String username , String bio){
            SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
            SharedPreferences.Editor editor = sharedPreferences.edit();
 
-           editor.putInt(KEY_USER_ID, id);
-           editor.putString(KEY_USER_EMAIL, "");
-           editor.putString(KEY_USERNAME, "");
+           editor.putString(KEY_USER_EMAIL, email);
+           editor.putString(KEY_USERNAME, username);
+           editor.putString(KEY_USER_BIO,bio);
 
            editor.apply();
-        return  true;
+           return true;
        }
 
     public boolean isLoggedIn() {
@@ -86,5 +88,9 @@ public class SharedPrefManager {
     public Integer getId2(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(KEY_USER_ID,0);
+    }
+    public String getbio(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_USER_BIO,null);
     }
 }

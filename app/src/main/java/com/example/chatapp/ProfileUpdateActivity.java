@@ -35,7 +35,6 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_update);
-        System.out.println("Oncreate çalıştı");
         textViewUserEmail = findViewById(R.id.textViewUserEmail);
         textViewUsername = findViewById(R.id.textViewUsername);
         textViewUserID = findViewById(R.id.textViewUserID);
@@ -78,6 +77,12 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
                                     jsonObject.getInt("mes_count"),
                                     jsonObject.getString("reg_date")
                             );
+                            SharedPrefManager.getInstance(getApplicationContext())
+                                    .profilData(
+                                            jsonObject.getString("email"),
+                                            jsonObject.getString("username"),
+                                            jsonObject.getString("profile_bio")
+                                    );
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -100,7 +105,7 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
         };
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
-    private void profilUp(String username, String email, String profile_bio ,String image_name ,String image_path ,  Integer mes_count ,String reg_date){
+    public void profilUp(String username, String email, String profile_bio ,String image_name ,String image_path ,  Integer mes_count ,String reg_date){
         String mesC = Integer.toString(mes_count);
         textViewUserEmail.setText(email);
       textViewUsername.setText(username);

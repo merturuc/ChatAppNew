@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,14 +37,17 @@ public class ProfileUserUpdate extends AppCompatActivity implements View.OnClick
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextBio = findViewById(R.id.editTextBio);
         buttonUpdate = findViewById(R.id.buttonUpdate);
-
         buttonUpdate.setOnClickListener(this);
+        String username = SharedPrefManager.getInstance(this).getUsername();
+        String email = SharedPrefManager.getInstance(this).getUserEmail();
+        String bio = SharedPrefManager.getInstance(this).getbio();
+        oldProfil(username,email,bio);
     }
-//    public void oldProfil(String username , String email , String bio){
-//       editTextUsername.setText(username);
-//       editTextEmail.setText(email);
-//       editTextBio.setText(bio);  //Profil update yapılırken eski veriler edittext yazdırılcak.
-//    }
+    public void oldProfil(String username , String email , String bio){
+        editTextUsername.setText(username);
+        editTextEmail.setText(email);
+        editTextBio.setText(bio);  //Profil update yapılırken eski veriler edittext yazdırılcak.
+    }
     @Override
     public void onClick(View v) {
         if (v == buttonUpdate) {
@@ -65,6 +69,7 @@ public class ProfileUserUpdate extends AppCompatActivity implements View.OnClick
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

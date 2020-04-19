@@ -29,7 +29,7 @@ public class MessageDataPost  {
 public MessageDataPost(Activity context) {
         ctx = context;
 
-        }
+    }
 
     public void  MessageData(final String message ,final String id){
 

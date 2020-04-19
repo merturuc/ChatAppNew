@@ -1,16 +1,15 @@
 package com.example.chatapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -30,20 +29,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button buttonLogin;
     private Button buttonRegister;
     private ProgressDialog progressDialog;
-    private CheckBox rememberMe;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activitiy_login);
 
-        if(SharedPrefManager.getInstance(this).isLoggedIn()){
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
-            startActivity(new Intent(this , ChatActivity.class));
+            startActivity(new Intent(this, ChatActivity.class));
             return;
         }
         editTextUsername = findViewById(R.id.editTextUsername);
         editTextPassword = findViewById(R.id.editTextPassword);
-        rememberMe = findViewById(R.id.CheckBoxRemember);
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonRegister = findViewById(R.id.buttonRegister);
 
@@ -57,7 +55,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void userLogin() {
         final String username = editTextUsername.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
-        final boolean checkRemember = rememberMe.isChecked();
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -69,33 +66,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         try {
                             JSONObject obj = new JSONObject(response);
 
-                               if (!obj.getBoolean("error")) {
-                                   if(checkRemember) {
-                                       SharedPrefManager.getInstance(getApplicationContext())
-                                               .userLogin(
-                                                       obj.getInt("id"),
-                                                       obj.getString("username"),
-                                                       obj.getString("email")
-                                               );
-                                   }else {
-                                       SharedPrefManager.getInstance(getApplicationContext()).ruserLogin(obj.getInt("id"));
-                                       }
-                                       startActivity(new Intent(getApplicationContext(), ChatActivity.class));
-                                       finish();
-                                   }
-                                else {
-                                   Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
-                               }
+                            if (!obj.getBoolean("error")) {
+
+                                SharedPrefManager.getInstance(getApplicationContext())
+                                        .userLogin(
+                                                obj.getInt("id"),
+                                                obj.getString("username"),
+                                                obj.getString("email")
+                                        );
+                                startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+                                finish();
+                            } else {
+                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
+
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
         ) {
@@ -114,8 +108,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if (view == buttonLogin)
             userLogin();
-            if (view == buttonRegister)
-                startActivity(new Intent(this, MainActivity.class));
+        if (view == buttonRegister)
+            startActivity(new Intent(this, MainActivity.class));
 
     }
 }
