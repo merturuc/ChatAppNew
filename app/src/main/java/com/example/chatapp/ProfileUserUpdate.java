@@ -69,7 +69,9 @@ public class ProfileUserUpdate extends AppCompatActivity implements View.OnClick
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
+
                             Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -3,6 +3,8 @@
     package="com.example.chatapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ProfileUserUpdate"></activity>
+        <activity android:name=".LobbyActivity"></activity>
+        <activity android:name=".ProfileUserUpdate" />
         <activity android:name=".ProfileUpdateActivity" />
         <activity android:name=".MessageDataPost" />
         <activity android:name=".MainActivity" />

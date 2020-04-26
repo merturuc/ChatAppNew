@@ -33,9 +33,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     MessageDataPost msg = new MessageDataPost(this);
     private Button buttonProfile;
     private Button buttonLogout;
-    private Button send;
+    private Button send , buttonLobby;
     private WebSocket webSocket;
-    private WebSocket webSocket1;
     private MessageAdapter adapter;
     private EditText messageBox;
 
@@ -48,6 +47,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         send = findViewById(R.id.buttonSend);
         buttonProfile = findViewById(R.id.buttonProfile);
         buttonLogout = findViewById(R.id.buttonLogout);
+        buttonLobby = findViewById(R.id.buttonLobby);
+        buttonLobby.setOnClickListener(this);
         buttonProfile.setOnClickListener(this);
         buttonLogout.setOnClickListener(this);
         send.setOnClickListener(this);
@@ -95,6 +96,9 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
 
 
         }
+        if(v == buttonLobby){
+            startActivity(new Intent(this,LobbyActivity.class));
+          }
         if (v == buttonProfile)
 
             startActivity(new Intent(this, ProfileUpdateActivity.class));

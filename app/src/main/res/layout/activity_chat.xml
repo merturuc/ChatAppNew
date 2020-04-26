@@ -27,10 +27,17 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/buttonLobby"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="250dp"
+                    android:backgroundTint="#002E2121"
+                    android:drawableTint="#D50000"
+                    android:drawableStart="?attr/actionModePasteDrawable" />
+                <Button
                     android:id="@+id/buttonProfile"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="300dp"
                     android:backgroundTint="#002E2121"
                     android:drawableStart="@android:drawable/ic_menu_myplaces"
                     android:drawableTint="#D50000" />
