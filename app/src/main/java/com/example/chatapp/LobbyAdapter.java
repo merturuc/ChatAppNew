@@ -17,6 +17,7 @@ public class LobbyAdapter extends ArrayAdapter<LobbyDetails> {
 
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 

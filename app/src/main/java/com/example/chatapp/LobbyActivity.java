@@ -31,7 +31,8 @@ import java.util.Map;
 
 
 public class LobbyActivity extends AppCompatActivity {
-
+        ListView listView;
+        List<LobbyDetails> lobbyList;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,10 @@ public class LobbyActivity extends AppCompatActivity {
             setContentView(R.layout.activity_lobby);
             String id = SharedPrefManager.getInstance(this).getId();
             getLobbyUser(id);
-            ListView lobbyList = findViewById(R.id.listViewUsername);
+            listView = findViewById(R.id.listViewUsername);
+            lobbyList = new ArrayList<>();
 
-            ArrayList<LobbyDetails> lobbyDetails = new ArrayList<>();
-            LobbyAdapter adapter = new LobbyAdapter(this,lobbyDetails);
-            lobbyList.setAdapter(adapter);
+
 
 
     }
@@ -56,18 +56,17 @@ public class LobbyActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        ArrayList<LobbyDetails> lobby = new ArrayList<>();
                         try {
                             JSONArray jsonarray = new JSONArray(response);
                                 Log.e("Response",response);
                                 for(int i=0; i < jsonarray.length(); i++) {
                                     JSONObject jsonobject = jsonarray.getJSONObject(i);
-                                    String username       = jsonobject.getString("username");
-                                    Log.e("username",username);
-                                    LobbyDetails lobbyDetails = new LobbyDetails(username);
-                                    lobby.add(lobbyDetails);
+                                    LobbyDetails p = new LobbyDetails(jsonobject.getString("username"));
+                                    lobbyList.add(p);
 
                             }
+                                LobbyAdappter adapter = new LobbyAdappter(lobbyList,getApplicationContext());
+                                listView.setAdapter(adapter);
 
 
 
