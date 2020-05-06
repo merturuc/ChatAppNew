@@ -1,12 +1,15 @@
 package com.example.chatapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,9 +33,10 @@ import java.util.List;
 import java.util.Map;
 
 
-public class LobbyActivity extends AppCompatActivity {
+public class LobbyActivity extends AppCompatActivity implements View.OnClickListener {
         ListView listView;
         List<LobbyDetails> lobbyList;
+        Button buttonBackChat,buttonProfile,buttonLogout;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +46,28 @@ public class LobbyActivity extends AppCompatActivity {
             getLobbyUser(id);
             listView = findViewById(R.id.listViewUsername);
             lobbyList = new ArrayList<>();
+            buttonBackChat = findViewById(R.id.buttonBackChat);
+            buttonLogout = findViewById(R.id.buttonLogout);
+            buttonProfile = findViewById(R.id.buttonProfile);
 
+            buttonProfile.setOnClickListener(this);
+            buttonLogout.setOnClickListener(this);
+            buttonBackChat.setOnClickListener(this);
 
-
-
+    }
+    @Override
+    public void onClick(View v) {
+      if(v == buttonProfile){
+          startActivity(new Intent(this, ProfileUpdateActivity.class));
+      }
+      if(v == buttonLogout){
+          SharedPrefManager.getInstance(this).logout();
+          finish();
+          startActivity(new Intent(this, LoginActivity.class));
+        }
+      if(v == buttonBackChat){
+          startActivity(new Intent(this,ChatActivity.class));
+        }
     }
 
     public void getLobbyUser(final String id) {
@@ -90,6 +112,7 @@ public class LobbyActivity extends AppCompatActivity {
         };
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
     }
+
 
 
 }

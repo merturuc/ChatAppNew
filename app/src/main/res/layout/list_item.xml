@@ -5,13 +5,14 @@
     android:layout_height="wrap_content"
     android:minHeight="?android:listPreferredItemHeight"
     android:padding="13dp">
-
     <TextView
         android:id="@+id/textViewLobbyUser"
         android:layout_width="300dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:textSize="30sp"
+        android:background="#FFAB00"
+        android:textColor="#DD2C00"
         android:text="@string/ahmet_nur"/>
 
 </LinearLayout>

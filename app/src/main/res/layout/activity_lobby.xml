@@ -1,16 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#C41E0E40"
     tools:context=".LobbyActivity">
 
-    <ListView
-        android:id="@+id/listViewUsername"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
 
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:background="@drawable/deneme9"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:background="#FF0000"
+                    android:textColor="#FFFFFF"
+                    android:text="Lobby"/>
+                <Button
+                    android:id="@+id/buttonBackChat"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="100dp"
+                    android:backgroundTint="#002E2121"
+                    android:drawableStart="@android:drawable/ic_dialog_email"
+                    android:drawableTint="#D50000" />
+                <Button
+                    android:id="@+id/buttonProfile"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#002E2121"
+                    android:drawableStart="@android:drawable/ic_menu_myplaces"
+                    android:drawableTint="#D50000" />
+
+                <Button
+                    android:id="@+id/buttonLogout"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#002E2121"
+                    android:drawableStart="@android:drawable/ic_notification_clear_all"
+                    android:drawableTint="#D50000" />
+
+            </LinearLayout>
+            <ListView
+                android:id="@+id/listViewUsername"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

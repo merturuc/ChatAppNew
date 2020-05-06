@@ -128,6 +128,7 @@ public class ProfileUpdateActivity extends AppCompatActivity implements View.OnC
       textViewUsername.setText(username);
       textViewMessageCount.setText(mesC);
       textViewBio.setText(profile_bio);
+        textViewDate.setText(reg_date);
       imageViewProfil.setImageBitmap(bitmap);
       new GetImageFromURL(imageViewProfil).execute(image_name);
     }
